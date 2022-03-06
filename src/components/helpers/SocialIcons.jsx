@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { GitHub } from "../SVG/GitHub";
 import { LinkedIn } from "../SVG/LinkedIn";
@@ -33,9 +33,9 @@ const SocialIcons = () => {
         </Link>
       </div>
       <div>
-        <Link style={{ color: "inherit" }} to="/">
+        <NavLink style={{ color: "inherit" }} to="/">
           <LinkedIn width={25} height={25} fill="currentColor"></LinkedIn>
-        </Link>
+        </NavLink>
       </div>
       <Line />
     </Icons>
