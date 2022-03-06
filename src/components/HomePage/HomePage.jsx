@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
+import { YingYang } from "../SVG/YingYang";
 import HomeButton from "../helpers/HomeButton";
 import LogoComponents from "../helpers/LogoComponents";
 import SocialIcons from "../helpers/SocialIcons";
-import { YingYang } from "../SVG/YingYang";
+import Intro from "../Intro/Intro";
 
 const rotate = keyframes`
 from{
@@ -45,7 +46,7 @@ const Contact = styled(Link)`
 `;
 
 const Work = styled(Link)`
-  color: ${(props) => props.theme.text};
+  color: ${(props) => (props.open ? props.theme.body : props.theme.text)};
   position: absolute;
   top: 50%;
   transform: rotate(-90deg) translate(-50%, -50%);
@@ -54,7 +55,7 @@ const Work = styled(Link)`
 `;
 
 const About = styled(Link)`
-  color: ${(props) => props.theme.text};
+  color: ${(props) => (props.open ? props.theme.body : props.theme.text)};
   text-decoration: none;
   z-index: 1;
 `;
@@ -72,6 +73,18 @@ const BottomBar = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+`;
+
+const DarkScreen = styled.div`
+  position: absolute;
+  top: 0;
+  background-color: black;
+  bottom: 0;
+  right: 50%;
+  width: ${(props) => (props.open ? "50%" : 0)};
+  height: ${(props) => (props.open ? "100%" : 0)};
+  z-index: 1;
+  transition: height 0.5s ease, width 1s ease 0.5s;
 `;
 
 const Center = styled.button`
@@ -111,8 +124,9 @@ const HomePage = () => {
     <MainContainer>
       <Container>
         <HomeButton />
-        <LogoComponents />
-        <SocialIcons />
+        <LogoComponents theme={open ? "dark" : "light"} />
+        <SocialIcons theme={open ? "dark" : "light"} />
+        <DarkScreen open={open} />
         <Center open={open}>
           <YingYang
             width={open ? 120 : 200}
@@ -129,11 +143,11 @@ const HomePage = () => {
         >
           <h2>Say hi...</h2>
         </Contact>
-        <Work to="/work">
+        <Work to="/work" open={open}>
           <h2>Work</h2>
         </Work>
         <BottomBar>
-          <About to="/about">
+          <About to="/about" open={open}>
             <h2>About</h2>
           </About>
           <Skills to="/skills">
@@ -141,6 +155,7 @@ const HomePage = () => {
           </Skills>
         </BottomBar>
       </Container>
+      {open && <Intro open={open} />}
     </MainContainer>
   );
 };

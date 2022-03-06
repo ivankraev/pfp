@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { GitHub } from "../SVG/GitHub";
 import { LinkedIn } from "../SVG/LinkedIn";
+import { darkTheme } from "../Themes";
 
 const Icons = styled.div`
   display: flex;
@@ -21,23 +22,32 @@ const Icons = styled.div`
 const Line = styled.span`
   width: 2px;
   height: 8rem;
-  background-color: ${(props) => props.theme.text};
+  background-color: ${(props) =>
+    props.color === "dark" ? darkTheme.text : darkTheme.body};
 `;
 
-const SocialIcons = () => {
+const SocialIcons = (props) => {
   return (
     <Icons>
       <div>
         <Link style={{ color: "inherit" }} to="/">
-          <GitHub width={25} height={25} fill="currentColor"></GitHub>
+          <GitHub
+            width={25}
+            height={25}
+            fill={props.theme === "dark" ? darkTheme.text : darkTheme.body}
+          ></GitHub>
         </Link>
       </div>
       <div>
         <NavLink style={{ color: "inherit" }} to="/">
-          <LinkedIn width={25} height={25} fill="currentColor"></LinkedIn>
+          <LinkedIn
+            width={25}
+            height={25}
+            fill={props.theme === "dark" ? darkTheme.text : darkTheme.body}
+          ></LinkedIn>
         </NavLink>
       </div>
-      <Line />
+      <Line color={props.theme} />
     </Icons>
   );
 };
