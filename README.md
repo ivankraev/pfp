@@ -1,5 +1,5 @@
 # Install dependencies
--  yarn
+- yarn
 
 # Launch app
 - yarn start
