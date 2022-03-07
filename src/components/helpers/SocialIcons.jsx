@@ -30,7 +30,7 @@ const SocialIcons = (props) => {
   return (
     <Icons>
       <div>
-        <Link style={{ color: "inherit" }} to="/">
+        <Link style={{ cor: "inherit" }} to="/">
           <GitHub
             width={25}
             height={25}

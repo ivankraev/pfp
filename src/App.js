@@ -7,6 +7,7 @@ import HomePage from './components/HomePage/HomePage'
 import AboutPage from './components/AboutPage/AboutPage'
 import MySkillsPage from './components/MySkillsPage/MySkillsPage'
 import WorkPage from './components/WorkPage/WorkPage'
+import ProjectsPage from './components/ProjectsPage/ProjectsPage'
 const App = () => {
 
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route exact path='/about' element={<AboutPage />}></Route>
           <Route exact path='/skills' element={<MySkillsPage />}></Route>
           <Route exact path='/work' element={<WorkPage />}></Route>
+          <Route exact path='/projects' element={<ProjectsPage />}></Route>
         </Routes>
       </ThemeProvider>
     </>

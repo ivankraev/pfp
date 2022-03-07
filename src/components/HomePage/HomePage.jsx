@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { YingYang } from "../SVG/YingYang";
-import HomeButton from "../helpers/HomeButton";
-import LogoComponents from "../helpers/LogoComponents";
+import LogoComponent from "../helpers/LogoComponent";
 import SocialIcons from "../helpers/SocialIcons";
 import Intro from "../Intro/Intro";
 
@@ -50,6 +50,16 @@ const Work = styled(Link)`
   position: absolute;
   top: 50%;
   transform: rotate(-90deg) translate(-50%, -50%);
+  text-decoration: none;
+  z-index: 1;
+`;
+
+const Projects = styled(Link)`
+  color: ${(props) => props.theme.text};
+  position: absolute;
+  right: calc(1rem + 1vw);
+  top: 50%;
+  transform: rotate(90deg) translate(-50%, -50%);
   text-decoration: none;
   z-index: 1;
 `;
@@ -103,7 +113,7 @@ const Center = styled.button`
   transition: all 1s ease;
 
   & > :first-child {
-    animation: ${rotate} infinite 1.5s linear;
+    animation: ${rotate} infinite 2.5s linear;
   }
 
   & > :last-child {
@@ -123,8 +133,7 @@ const HomePage = () => {
   return (
     <MainContainer>
       <Container>
-        <HomeButton />
-        <LogoComponents theme={open ? "dark" : "light"} />
+        <LogoComponent theme={open ? "dark" : "light"} />
         <SocialIcons theme={open ? "dark" : "light"} />
         <DarkScreen open={open} />
         <Center open={open}>
@@ -141,17 +150,30 @@ const HomePage = () => {
           target="_blank"
           to={{ pathname: "mailto:ivankraev122@gmail.com" }}
         >
-          <h2>Say hi...</h2>
+          <motion.h2 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            Say hi...
+          </motion.h2>
         </Contact>
         <Work to="/work" open={open}>
-          <h2>Work</h2>
+          <motion.h2 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            Work
+          </motion.h2>
         </Work>
+        <Projects to="/projects" open={open}>
+          <motion.h2 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            Projects
+          </motion.h2>
+        </Projects>
         <BottomBar>
           <About to="/about" open={open}>
-            <h2>About</h2>
+            <motion.h2 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              About
+            </motion.h2>
           </About>
           <Skills to="/skills">
-            <h2>Skills</h2>
+            <motion.h2 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              Skills
+            </motion.h2>
           </Skills>
         </BottomBar>
       </Container>
