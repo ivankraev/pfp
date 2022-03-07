@@ -146,10 +146,7 @@ const HomePage = () => {
           <span>click here</span>
         </Center>
 
-        <Contact
-          target="_blank"
-          to={{ pathname: "mailto:ivankraev122@gmail.com" }}
-        >
+        <Contact target="_blank" to="mailto:ivankraev122@gmail.com">
           <motion.h2 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             Say hi...
           </motion.h2>
